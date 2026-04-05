@@ -1,0 +1,317 @@
+
+NumPy Function Hierarchy - ASCII Flowchart
+============================================
+
+NumPy
+│
+├── ARRAY CREATION (Array construction & initialization)
+│   │
+│   ├── From Shape/Value
+│   │   ├─ np.zeros     → zeros(shape) → [0,0,0...]
+│   │   ├─ np.ones      → ones(shape) → [1,1,1...]
+│   │   ├─ np.eye       → eye(N) → identity matrix
+│   │   ├─ np.empty     → empty array
+│   │   ├─ np.full      → full(shape, value)
+│   │   └─ np.identity  → identity(n)
+│   │
+│   ├── From Existing Data
+│   │   ├─ np.array     → array(list)
+│   │   ├─ np.asarray   → asarray(data)
+│   │   ├─ np.copy      → copy(array)
+│   │   └─ np.fromfile  → fromfile(filename)
+│   │
+│   └── Ranges & Sequences
+│       ├─ np.arange    → arange(start, stop, step)
+│       ├─ np.linspace  → linspace(start, stop, num)
+│       ├─ np.logspace  → logspace(start, stop, num)
+│       └─ np.geomspace → geomspace(start, stop, num)
+│
+├── ARRAY MANIPULATION (Shape & structure modification)
+│   │
+│   ├── Shape Transformation
+│   │   ├─ np.reshape    → reshape(array, shape)
+│   │   ├─ np.ravel      → ravel(array) → 1D
+│   │   ├─ np.flatten    → flatten(array)
+│   │   ├─ np.transpose  → transpose(array)
+│   │   ├─ np.squeeze    → squeeze(array)
+│   │   └─ np.expand_dims → expand_dims(array, axis)
+│   │
+│   ├── Concatenation & Stacking
+│   │   ├─ np.concatenate → concatenate([arrays])
+│   │   ├─ np.stack       → stack(arrays, axis)
+│   │   ├─ np.vstack      → vstack (vertical)
+│   │   ├─ np.hstack      → hstack (horizontal)
+│   │   └─ np.dstack      → dstack (depth)
+│   │
+│   └── Splitting & Indexing
+│       ├─ np.split      → split(array, sections)
+│       ├─ np.hsplit     → horizontal split
+│       ├─ np.vsplit     → vertical split
+│       ├─ np.take       → take(array, indices)
+│       └─ np.extract    → extract(condition, array)
+│
+├── MATHEMATICAL FUNCTIONS
+│   │
+│   ├── Arithmetic Operations
+│   │   ├─ np.add        → x1 + x2
+│   │   ├─ np.subtract   → x1 - x2
+│   │   ├─ np.multiply   → x1 * x2
+│   │   ├─ np.divide     → x1 / x2
+│   │   ├─ np.power      → x1 ^ x2
+│   │   ├─ np.sqrt       → √x
+│   │   ├─ np.cbrt       → ∛x
+│   │   ├─ np.square     → x²
+│   │   ├─ np.absolute   → |x|
+│   │   ├─ np.sign       → sign(x)
+│   │   └─ np.reciprocal → 1/x
+│   │
+│   ├── Trigonometric Functions
+│   │   ├─ np.sin        → sin(x)
+│   │   ├─ np.cos        → cos(x)
+│   │   ├─ np.tan        → tan(x)
+│   │   ├─ np.arcsin     → arcsin(x)
+│   │   ├─ np.arccos     → arccos(x)
+│   │   ├─ np.arctan     → arctan(x)
+│   │   ├─ np.arctan2    → arctan(y/x)
+│   │   ├─ np.hypot      → √(x²+y²)
+│   │   ├─ np.degrees    → radians→degrees
+│   │   └─ np.radians    → degrees→radians
+│   │
+│   ├── Hyperbolic Functions
+│   │   ├─ np.sinh       → sinh(x)
+│   │   ├─ np.cosh       → cosh(x)
+│   │   ├─ np.tanh       → tanh(x)
+│   │   ├─ np.arcsinh    → arcsinh(x)
+│   │   ├─ np.arccosh    → arccosh(x)
+│   │   └─ np.arctanh    → arctanh(x)
+│   │
+│   ├── Exponential & Logarithmic
+│   │   ├─ np.exp        → e^x
+│   │   ├─ np.exp2       → 2^x
+│   │   ├─ np.expm1      → e^x - 1
+│   │   ├─ np.log        → ln(x)
+│   │   ├─ np.log10      → log₁₀(x)
+│   │   ├─ np.log2       → log₂(x)
+│   │   ├─ np.log1p      → ln(1+x)
+│   │   └─ np.logaddexp  → log(e^x1 + e^x2)
+│   │
+│   ├── Rounding Functions
+│   │   ├─ np.round      → round(x, decimals)
+│   │   ├─ np.floor      → ⌊x⌋
+│   │   ├─ np.ceil       → ⌈x⌉
+│   │   ├─ np.trunc      → truncate(x)
+│   │   ├─ np.rint       → round to nearest int
+│   │   ├─ np.fix        → round towards 0
+│   │   └─ np.around     → around(x, decimals)
+│   │
+│   └── Special Functions
+│       ├─ np.clip       → clip(x, min, max)
+│       ├─ np.heaviside  → Heaviside step
+│       ├─ np.sinc       → sinc(x)
+│       └─ np.nan_to_num → replace NaN
+│
+├── STATISTICAL FUNCTIONS
+│   │
+│   ├── Descriptive Statistics
+│   │   ├─ np.mean       → arithmetic mean
+│   │   ├─ np.median     → median
+│   │   ├─ np.std        → standard deviation
+│   │   ├─ np.var        → variance
+│   │   ├─ np.ptp        → peak-to-peak (max-min)
+│   │   ├─ np.percentile → percentile
+│   │   └─ np.quantile   → quantile
+│   │
+│   ├── Reduction Functions
+│   │   ├─ np.sum        → Σ elements
+│   │   ├─ np.prod       → ∏ elements
+│   │   ├─ np.cumsum     → cumulative sum
+│   │   ├─ np.cumprod    → cumulative product
+│   │   ├─ np.diff       → differences
+│   │   ├─ np.gradient   → gradient
+│   │   └─ np.trapz      → trapezoidal rule
+│   │
+│   └── NaN-aware Functions
+│       ├─ np.nanmean    → mean ignoring NaN
+│       ├─ np.nanmedian  → median ignoring NaN
+│       ├─ np.nanstd     → std ignoring NaN
+│       ├─ np.nanvar     → variance ignoring NaN
+│       ├─ np.nansum     → sum ignoring NaN
+│       ├─ np.nanprod    → product ignoring NaN
+│       └─ np.nancumsum  → cumsum ignoring NaN
+│
+├── SORTING & SEARCHING
+│   │
+│   ├── Sorting
+│   │   ├─ np.sort        → sort(array, axis)
+│   │   ├─ np.argsort     → indices of sorted
+│   │   ├─ np.lexsort     → sort by multiple keys
+│   │   ├─ np.msort       → sort each row
+│   │   └─ np.partition   → partial sort
+│   │
+│   ├── Searching & Finding
+│   │   ├─ np.argmax      → index of maximum
+│   │   ├─ np.argmin      → index of minimum
+│   │   ├─ np.searchsorted → binary search
+│   │   ├─ np.where       → conditional indices
+│   │   └─ np.nonzero     → non-zero indices
+│   │
+│   └── Extrema Finding
+│       ├─ np.max        → maximum value
+│       ├─ np.min        → minimum value
+│       ├─ np.amax       → alias for max
+│       ├─ np.amin       → alias for min
+│       ├─ np.nanmax     → max ignoring NaN
+│       ├─ np.nanmin     → min ignoring NaN
+│       ├─ np.maximum    → element-wise max
+│       ├─ np.minimum    → element-wise min
+│       ├─ np.fmax       → floating max
+│       └─ np.fmin       → floating min
+│
+├── LINEAR ALGEBRA
+│   │
+│   ├── Matrix Operations
+│   │   ├─ np.dot        → dot product
+│   │   ├─ np.matmul     → matrix multiplication
+│   │   ├─ np.inner      → inner product
+│   │   ├─ np.outer      → outer product
+│   │   ├─ np.cross      → cross product
+│   │   ├─ np.tensordot  → tensor dot
+│   │   └─ np.einsum     → Einstein summation
+│   │
+│   └── Advanced Linear Algebra
+│       ├─ np.linalg.inv       → matrix inverse
+│       ├─ np.linalg.det       → determinant
+│       ├─ np.linalg.trace     → trace
+│       ├─ np.linalg.solve     → solve Ax=b
+│       ├─ np.linalg.eig       → eigenvalues/vectors
+│       ├─ np.linalg.svd       → singular value decomposition
+│       ├─ np.linalg.qr        → QR decomposition
+│       ├─ np.linalg.cholesky  → Cholesky decomposition
+│       ├─ np.linalg.norm      → vector/matrix norm
+│       └─ np.linalg.matrix_rank → rank
+│
+├── LOGIC & COMPARISON
+│   │
+│   ├── Logical Operations
+│   │   ├─ np.logical_and    → element-wise AND
+│   │   ├─ np.logical_or     → element-wise OR
+│   │   ├─ np.logical_not    → element-wise NOT
+│   │   ├─ np.logical_xor    → element-wise XOR
+│   │   ├─ np.all            → all True?
+│   │   └─ np.any            → any True?
+│   │
+│   └── Comparison Operations
+│       ├─ np.equal          → ==
+│       ├─ np.not_equal      → !=
+│       ├─ np.less           → <
+│       ├─ np.less_equal     → <=
+│       ├─ np.greater        → >
+│       ├─ np.greater_equal  → >=
+│       ├─ np.isclose        → approximately equal
+│       ├─ np.isnan          → is NaN?
+│       ├─ np.isinf          → is inf?
+│       └─ np.isfinite       → is finite?
+│
+├── BIT-WISE OPERATIONS
+│   │
+│   ├─ np.bitwise_and      → & operator
+│   ├─ np.bitwise_or       → | operator
+│   ├─ np.bitwise_xor      → ^ operator
+│   ├─ np.bitwise_not      → ~ operator
+│   ├─ np.left_shift       → << operator
+│   └─ np.right_shift      → >> operator
+│
+├── TYPE CONVERSION
+│   │
+│   ├─ np.astype           → convert dtype
+│   ├─ np.float32          → convert to float32
+│   ├─ np.float64          → convert to float64
+│   ├─ np.int32            → convert to int32
+│   ├─ np.int64            → convert to int64
+│   ├─ np.bool_            → convert to bool
+│   ├─ np.complex_         → convert to complex
+│   └─ np.array_equal      → test equality
+│
+├── STRING OPERATIONS
+│   │
+│   ├─ np.char.add         → concatenate strings
+│   ├─ np.char.multiply    → repeat strings
+│   ├─ np.char.capitalize  → capitalize
+│   ├─ np.char.upper       → uppercase
+│   ├─ np.char.lower       → lowercase
+│   ├─ np.char.strip       → strip whitespace
+│   └─ np.char.split       → split strings
+│
+├── INDEXING & SELECTION
+│   │
+│   ├─ np.take             → take elements
+│   ├─ np.compress         → compress array
+│   ├─ np.choose           → choose from array
+│   ├─ np.select           → select by condition
+│   ├─ np.where            → conditional select
+│   ├─ np.diagonal         → diagonal elements
+│   ├─ np.diag             → diagonal matrix
+│   ├─ np.extract          → extract elements
+│   ├─ np.indices          → array of indices
+│   └─ np.ix_              → index tuple
+│
+├── RANDOM SAMPLING
+│   │
+│   ├─ np.random.rand       → [0,1)
+│   ├─ np.random.randn      → standard normal
+│   ├─ np.random.randint    → random integers
+│   ├─ np.random.choice     → random choice
+│   ├─ np.random.shuffle    → shuffle array
+│   ├─ np.random.permutation → permutation
+│   ├─ np.random.normal     → normal distribution
+│   ├─ np.random.uniform    → uniform distribution
+│   ├─ np.random.seed       → set seed
+│   └─ np.random.Generator  → newer API
+│
+└── UTILITIES
+    │
+    ├─ np.unique            → unique elements
+    ├─ np.setdiff1d         → set difference
+    ├─ np.union1d           → set union
+    ├─ np.intersect1d       → set intersection
+    ├─ np.isin              → element in set
+    ├─ np.searchsorted      → binary search
+    ├─ np.correlate         → correlate arrays
+    ├─ np.convolve          → convolve arrays
+    ├─ np.histogram         → histogram
+    └─ np.bincount          → count bins
+
+
+KEY STATISTICS:
+===============
+Total Categories: 14
+Total Subcategories: 35+
+Total Functions: 100+ (in full NumPy API)
+Organization: Hierarchical by functionality
+
+ACCESS PATTERNS:
+================
+1. BY TASK: "I need to sort data" → look in SORTING & SEARCHING
+2. BY TYPE: "Mathematical operation" → look in MATHEMATICAL FUNCTIONS
+3. BY SHAPE: "Reshape my array" → look in ARRAY MANIPULATION
+4. BY STAT: "Calculate mean/std" → look in STATISTICAL FUNCTIONS
+5. BY DOMAIN: "Linear algebra" → look in LINEAR ALGEBRA
+
+
+MOST COMMONLY USED (Top 15):
+============================
+1. np.array        - Create array
+2. np.arange       - Create range
+3. np.reshape      - Change shape
+4. np.sum          - Sum elements
+5. np.mean         - Average
+6. np.sort         - Sort array
+7. np.dot          - Matrix multiply
+8. np.transpose    - Transpose
+9. np.where        - Conditional
+10. np.concatenate  - Join arrays
+11. np.max          - Maximum
+12. np.min          - Minimum
+13. np.linspace     - Spaced values
+14. np.abs          - Absolute value
+15. np.sqrt         - Square root

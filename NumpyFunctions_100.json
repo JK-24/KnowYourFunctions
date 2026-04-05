@@ -1,0 +1,2008 @@
+{
+  "hierarchy": {
+    "array_creation": {
+      "from_shape": [
+        {
+          "name": "np.zeros",
+          "intent": "Return a new array of given shape filled with zeros.",
+          "category": [
+            "array_creation",
+            "from_shape"
+          ],
+          "relatedFunctions": [
+            "np.ones",
+            "np.empty",
+            "np.full",
+            "np.zeros_like"
+          ],
+          "inputs": [
+            {
+              "name": "shape",
+              "type": "int or tuple of ints",
+              "meaning": "Shape of the new array.",
+              "constraints": [
+                "must be non-negative"
+              ]
+            },
+            {
+              "name": "dtype",
+              "type": "np.dtype",
+              "meaning": "The desired data type for the array.",
+              "constraints": [
+                "must be a valid numpy dtype",
+                "optional",
+                "default: float64"
+              ]
+            },
+            {
+              "name": "order",
+              "type": "str",
+              "meaning": "Memory layout order.",
+              "constraints": [
+                "must be 'C' or 'F'",
+                "optional",
+                "default: C"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "Array of zeros with the given shape."
+          },
+          "preconditions": [
+            "shape must be a valid integer or tuple of integers",
+            "dtype must be a valid numpy data type",
+            "order must be 'C' or 'F' if provided"
+          ],
+          "sideEffects": [
+            "Allocates memory for the new array"
+          ],
+          "failureModes": [
+            "TypeError if shape is not an integer or tuple",
+            "ValueError if shape contains negative values"
+          ],
+          "examples": [
+            {
+              "description": "1D array of zeros",
+              "code": "np.zeros(5)",
+              "output": "array([0., 0., 0., 0., 0.])"
+            },
+            {
+              "description": "2D array of zeros",
+              "code": "np.zeros((2, 3))",
+              "output": "array([[0., 0., 0.],\n       [0., 0., 0.]])"
+            },
+            {
+              "description": "Integer dtype",
+              "code": "np.zeros(5, dtype=int)",
+              "output": "array([0, 0, 0, 0, 0])"
+            }
+          ]
+        },
+        {
+          "name": "np.ones",
+          "intent": "Return a new array of given shape filled with ones.",
+          "category": [
+            "array_creation",
+            "from_shape"
+          ],
+          "relatedFunctions": [
+            "np.zeros",
+            "np.empty",
+            "np.full",
+            "np.ones_like"
+          ],
+          "inputs": [
+            {
+              "name": "shape",
+              "type": "int or tuple of ints",
+              "meaning": "Shape of the new array.",
+              "constraints": [
+                "must be non-negative"
+              ]
+            },
+            {
+              "name": "dtype",
+              "type": "np.dtype",
+              "meaning": "The desired data type for the array.",
+              "constraints": [
+                "must be a valid numpy dtype",
+                "optional",
+                "default: float64"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "Array of ones with the given shape."
+          },
+          "preconditions": [
+            "shape must be a valid integer or tuple of integers",
+            "dtype must be a valid numpy data type"
+          ],
+          "sideEffects": [
+            "Allocates memory for the new array"
+          ],
+          "failureModes": [
+            "TypeError if shape is not an integer or tuple",
+            "ValueError if shape contains negative values"
+          ],
+          "examples": [
+            {
+              "description": "1D array of ones",
+              "code": "np.ones(5)",
+              "output": "array([1., 1., 1., 1., 1.])"
+            },
+            {
+              "description": "2D array of ones with dtype int",
+              "code": "np.ones((2, 3), dtype=int)",
+              "output": "array([[1, 1, 1],\n       [1, 1, 1]])"
+            }
+          ]
+        },
+        {
+          "name": "np.eye",
+          "intent": "Return a 2-D array with ones on the diagonal and zeros elsewhere.",
+          "category": [
+            "array_creation",
+            "from_shape"
+          ],
+          "relatedFunctions": [
+            "np.identity",
+            "np.diag",
+            "np.zeros"
+          ],
+          "inputs": [
+            {
+              "name": "N",
+              "type": "int",
+              "meaning": "Number of rows in the output.",
+              "constraints": [
+                "must be non-negative"
+              ]
+            },
+            {
+              "name": "M",
+              "type": "int",
+              "meaning": "Number of columns in the output.",
+              "constraints": [
+                "optional",
+                "defaults to N"
+              ]
+            },
+            {
+              "name": "k",
+              "type": "int",
+              "meaning": "Index of the diagonal.",
+              "constraints": [
+                "optional",
+                "default: 0"
+              ]
+            },
+            {
+              "name": "dtype",
+              "type": "np.dtype",
+              "meaning": "The desired data type.",
+              "constraints": [
+                "optional",
+                "default: float"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "2D array with ones on the diagonal."
+          },
+          "preconditions": [
+            "N must be a non-negative integer",
+            "M must be a non-negative integer if provided"
+          ],
+          "sideEffects": [
+            "Allocates memory for the new array"
+          ],
+          "failureModes": [
+            "TypeError if N or M are not integers",
+            "ValueError if N or M are negative"
+          ],
+          "examples": [
+            {
+              "description": "3x3 identity matrix",
+              "code": "np.eye(3)",
+              "output": "array([[1., 0., 0.],\n       [0., 1., 0.],\n       [0., 0., 1.]])"
+            },
+            {
+              "description": "3x4 identity-like matrix",
+              "code": "np.eye(3, 4)",
+              "output": "array([[1., 0., 0., 0.],\n       [0., 1., 0., 0.],\n       [0., 0., 1., 0.]])"
+            }
+          ]
+        }
+      ],
+      "from_data": [
+        {
+          "name": "np.array",
+          "intent": "Create a numpy array from a list or tuple.",
+          "category": [
+            "array_creation",
+            "from_data"
+          ],
+          "relatedFunctions": [
+            "np.asarray",
+            "np.copy",
+            "np.zeros",
+            "np.ones",
+            "np.empty",
+            "np.empty_like",
+            "np.ones_like",
+            "np.zeros_like",
+            "np.full",
+            "np.full_like"
+          ],
+          "inputs": [
+            {
+              "name": "object",
+              "type": "list or tuple",
+              "meaning": "The input array or scalar value.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "dtype",
+              "type": "np.dtype",
+              "meaning": "The desired data type for the array.",
+              "constraints": [
+                "must be a valid numpy dtype",
+                "optional"
+              ]
+            },
+            {
+              "name": "copy",
+              "type": "bool",
+              "meaning": "If true, the object is copied.",
+              "constraints": [
+                "optional"
+              ]
+            },
+            {
+              "name": "order",
+              "type": "str",
+              "meaning": "The desired memory layout order for the array. C - row major or F - column major.",
+              "constraints": [
+                "must be 'C' or 'F' order",
+                "optional"
+              ]
+            },
+            {
+              "name": "subok",
+              "type": "bool",
+              "meaning": "If true, subclasses are preserved.",
+              "constraints": [
+                "optional"
+              ]
+            },
+            {
+              "name": "ndmin",
+              "type": "int",
+              "meaning": "The minimum number of dimensions for the resulting array.",
+              "constraints": [
+                "must be non-negative",
+                "optional"
+              ]
+            },
+            {
+              "name": "like",
+              "type": "np.array",
+              "meaning": "Reference object to allow the creation of arrays which are not NumPy arrays.",
+              "constraints": [
+                "must be a valid numpy array",
+                "optional"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "The created numpy array."
+          },
+          "preconditions": [
+            "object is a valid list or tuple.",
+            "if dtype is provided, it must be a valid numpy dtype.",
+            "if order is provided, it must be 'C' or 'F'.",
+            "if like is provided, it must be a valid numpy array."
+          ],
+          "sideEffects": [
+            "Allocates memory for the new array"
+          ],
+          "failureModes": [
+            "TypeError if object is not a list or tuple",
+            "TypeError if dtype is invalid",
+            "ValueError if ndmin is negative"
+          ],
+          "examples": [
+            {
+              "description": "1D array from list",
+              "code": "np.array([1, 2, 3, 4, 5])",
+              "output": "array([1, 2, 3, 4, 5])"
+            },
+            {
+              "description": "2D array from nested list",
+              "code": "np.array([[1, 2, 3], [4, 5, 6]])",
+              "output": "array([[1, 2, 3],\n       [4, 5, 6]])"
+            },
+            {
+              "description": "Array with explicit dtype",
+              "code": "np.array([1, 2, 3], dtype=float)",
+              "output": "array([1., 2., 3.])"
+            },
+            {
+              "description": "Array with complex numbers",
+              "code": "np.array([1+2j, 3+4j])",
+              "output": "array([1.+2.j, 3.+4.j])"
+            }
+          ]
+        },
+        {
+          "name": "np.asarray",
+          "intent": "Convert the input to an ndarray.",
+          "category": [
+            "array_creation",
+            "from_data"
+          ],
+          "relatedFunctions": [
+            "np.array",
+            "np.asanyarray",
+            "np.copy"
+          ],
+          "inputs": [
+            {
+              "name": "a",
+              "type": "array_like",
+              "meaning": "Input data in any form that can be converted to an ndarray.",
+              "constraints": [
+                "can be list, tuple, or existing array"
+              ]
+            },
+            {
+              "name": "dtype",
+              "type": "np.dtype",
+              "meaning": "By default, the data-type is inferred from the input data.",
+              "constraints": [
+                "optional"
+              ]
+            },
+            {
+              "name": "order",
+              "type": "str",
+              "meaning": "Whether to use row-major or column-major memory layout.",
+              "constraints": [
+                "must be 'C' or 'F'",
+                "optional"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "Array interpretation of a. No copy is performed if the input is already an ndarray with matching dtype."
+          },
+          "preconditions": [
+            "a must be convertible to an array",
+            "if dtype is provided, conversion must be possible"
+          ],
+          "sideEffects": [
+            "May allocate memory if conversion or copy is needed"
+          ],
+          "failureModes": [
+            "TypeError if a cannot be converted to array",
+            "TypeError if dtype is invalid"
+          ],
+          "examples": [
+            {
+              "description": "Convert list to array (no copy)",
+              "code": "np.asarray([1, 2, 3])",
+              "output": "array([1, 2, 3])"
+            },
+            {
+              "description": "Convert float list with dtype int",
+              "code": "np.asarray([1.5, 2.5, 3.5], dtype=int)",
+              "output": "array([1, 2, 3])"
+            }
+          ]
+        }
+      ],
+      "ranges": [
+        {
+          "name": "np.arange",
+          "intent": "Return evenly spaced values within a given interval.",
+          "category": [
+            "array_creation",
+            "ranges"
+          ],
+          "relatedFunctions": [
+            "np.linspace",
+            "np.logspace",
+            "np.geomspace"
+          ],
+          "inputs": [
+            {
+              "name": "start",
+              "type": "number",
+              "meaning": "Start of interval. The interval includes this value.",
+              "constraints": [
+                "default: 0"
+              ]
+            },
+            {
+              "name": "stop",
+              "type": "number",
+              "meaning": "End of interval. The interval does not include this value.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "step",
+              "type": "number",
+              "meaning": "Spacing between values.",
+              "constraints": [
+                "default: 1",
+                "must not be zero"
+              ]
+            },
+            {
+              "name": "dtype",
+              "type": "np.dtype",
+              "meaning": "The type of the output array.",
+              "constraints": [
+                "optional"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "Array of evenly spaced values."
+          },
+          "preconditions": [
+            "step must not be zero",
+            "start, stop, and step must be numeric"
+          ],
+          "sideEffects": [
+            "Allocates memory for the output array"
+          ],
+          "failureModes": [
+            "TypeError if start, stop, or step are not numeric",
+            "ValueError if step is zero"
+          ],
+          "examples": [
+            {
+              "description": "Default start=0, step=1",
+              "code": "np.arange(5)",
+              "output": "array([0, 1, 2, 3, 4])"
+            },
+            {
+              "description": "Custom start and stop",
+              "code": "np.arange(2, 10, 2)",
+              "output": "array([2, 4, 6, 8])"
+            },
+            {
+              "description": "Float step",
+              "code": "np.arange(0, 1, 0.25)",
+              "output": "array([0.  , 0.25, 0.5 , 0.75])"
+            }
+          ]
+        },
+        {
+          "name": "np.linspace",
+          "intent": "Return evenly spaced numbers over a specified interval.",
+          "category": [
+            "array_creation",
+            "ranges"
+          ],
+          "relatedFunctions": [
+            "np.arange",
+            "np.logspace",
+            "np.geomspace"
+          ],
+          "inputs": [
+            {
+              "name": "start",
+              "type": "number",
+              "meaning": "The starting value of the sequence.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "stop",
+              "type": "number",
+              "meaning": "The end value of the sequence.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "num",
+              "type": "int",
+              "meaning": "Number of samples to generate.",
+              "constraints": [
+                "default: 50",
+                "must be non-negative"
+              ]
+            },
+            {
+              "name": "endpoint",
+              "type": "bool",
+              "meaning": "If True, stop is the last sample.",
+              "constraints": [
+                "default: True",
+                "optional"
+              ]
+            },
+            {
+              "name": "retstep",
+              "type": "bool",
+              "meaning": "If True, return (samples, step).",
+              "constraints": [
+                "default: False",
+                "optional"
+              ]
+            },
+            {
+              "name": "dtype",
+              "type": "np.dtype",
+              "meaning": "The type of the output array.",
+              "constraints": [
+                "optional"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array or tuple",
+            "meaning": "num equally spaced samples or tuple (samples, step) if retstep=True"
+          },
+          "preconditions": [
+            "num must be non-negative",
+            "start and stop must be numeric"
+          ],
+          "sideEffects": [
+            "Allocates memory for the output array"
+          ],
+          "failureModes": [
+            "TypeError if num is not an integer",
+            "ValueError if num is negative"
+          ],
+          "examples": [
+            {
+              "description": "5 points from 0 to 10",
+              "code": "np.linspace(0, 10, 5)",
+              "output": "array([ 0. ,  2.5,  5. ,  7.5, 10. ])"
+            },
+            {
+              "description": "Without endpoint",
+              "code": "np.linspace(0, 10, 5, endpoint=False)",
+              "output": "array([0., 2., 4., 6., 8.])"
+            },
+            {
+              "description": "With step size",
+              "code": "np.linspace(0, 10, 5, retstep=True)",
+              "output": "(array([ 0. ,  2.5,  5. ,  7.5, 10. ]), 2.5)"
+            }
+          ]
+        }
+      ]
+    },
+    "math": {
+      "arithmetic": [
+        {
+          "name": "np.absolute",
+          "intent": "Calculate absolute value of each element in the input array.",
+          "category": [
+            "math",
+            "arithmetic"
+          ],
+          "relatedFunctions": [
+            "np.abs",
+            "np.fabs",
+            "np.sign",
+            "np.clip"
+          ],
+          "inputs": [
+            {
+              "name": "x",
+              "type": "np.array or scalar",
+              "meaning": "The input array or scalar value.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "out",
+              "type": "np.array, optional",
+              "meaning": "A location into which the result is stored.",
+              "constraints": [
+                "must be same shape as x"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": [
+              "np.array or scalar",
+              "Tuple of np.array or scalar"
+            ],
+            "meaning": "The absolute value of the input array or scalar."
+          },
+          "preconditions": [
+            "x is a valid numpy array or a scalar.",
+            "if out is provided, it must be writable.",
+            "x must not contain NaN values.",
+            "x must be of a numeric data type."
+          ],
+          "sideEffects": [
+            "Overwrites out parameter if provided"
+          ],
+          "failureModes": [
+            "TypeError if x is not a numpy array or scalar",
+            "ValueError if out shape does not match x shape",
+            "RuntimeError if x contains NaN values"
+          ],
+          "examples": [
+            {
+              "description": "Integer array",
+              "code": "np.absolute([-1, -2, 3, -4])",
+              "output": "array([1, 2, 3, 4])"
+            },
+            {
+              "description": "Float array with negative values",
+              "code": "np.absolute([-1.5, 2.5, -3.7])",
+              "output": "array([1.5, 2.5, 3.7])"
+            },
+            {
+              "description": "Complex numbers",
+              "code": "np.absolute([3+4j, -3-4j])",
+              "output": "array([5., 5.])"
+            },
+            {
+              "description": "Scalar value",
+              "code": "np.absolute(-42)",
+              "output": "42"
+            }
+          ]
+        },
+        {
+          "name": "np.add",
+          "intent": "Add arguments element-wise.",
+          "category": [
+            "math",
+            "arithmetic"
+          ],
+          "relatedFunctions": [
+            "np.subtract",
+            "np.multiply",
+            "np.divide"
+          ],
+          "inputs": [
+            {
+              "name": "x1",
+              "type": "array_like",
+              "meaning": "The first input array.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "x2",
+              "type": "array_like",
+              "meaning": "The second input array.",
+              "constraints": [
+                "must not be null",
+                "must be broadcastable with x1"
+              ]
+            },
+            {
+              "name": "out",
+              "type": "np.array, optional",
+              "meaning": "Output array.",
+              "constraints": [
+                "optional"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "The sum of x1 and x2, element-wise."
+          },
+          "preconditions": [
+            "x1 and x2 must be compatible for broadcasting",
+            "x1 and x2 must be numeric arrays or scalars"
+          ],
+          "sideEffects": [
+            "Overwrites out parameter if provided"
+          ],
+          "failureModes": [
+            "ValueError if x1 and x2 cannot be broadcast together",
+            "TypeError if x1 or x2 are not numeric"
+          ],
+          "examples": [
+            {
+              "description": "Two integer arrays",
+              "code": "np.add([1, 2, 3], [4, 5, 6])",
+              "output": "array([5, 7, 9])"
+            },
+            {
+              "description": "Array and scalar (broadcasting)",
+              "code": "np.add([1, 2, 3], 10)",
+              "output": "array([11, 12, 13])"
+            },
+            {
+              "description": "2D arrays",
+              "code": "np.add([[1, 2], [3, 4]], [[5, 6], [7, 8]])",
+              "output": "array([[ 6,  8],\n       [10, 12]])"
+            },
+            {
+              "description": "Float arrays",
+              "code": "np.add([1.5, 2.5], [0.5, 1.5])",
+              "output": "array([2., 4.])"
+            }
+          ]
+        },
+        {
+          "name": "np.multiply",
+          "intent": "Multiply arguments element-wise.",
+          "category": [
+            "math",
+            "arithmetic"
+          ],
+          "relatedFunctions": [
+            "np.add",
+            "np.divide",
+            "np.power"
+          ],
+          "inputs": [
+            {
+              "name": "x1",
+              "type": "array_like",
+              "meaning": "The first input array.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "x2",
+              "type": "array_like",
+              "meaning": "The second input array.",
+              "constraints": [
+                "must not be null"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "The product of x1 and x2, element-wise."
+          },
+          "preconditions": [
+            "x1 and x2 must be broadcastable"
+          ],
+          "sideEffects": [],
+          "failureModes": [
+            "ValueError if arrays cannot be broadcast together"
+          ],
+          "examples": [
+            {
+              "description": "Two arrays",
+              "code": "np.multiply([1, 2, 3], [4, 5, 6])",
+              "output": "array([ 4, 10, 18])"
+            },
+            {
+              "description": "Array and scalar",
+              "code": "np.multiply([1, 2, 3], 10)",
+              "output": "array([10, 20, 30])"
+            }
+          ]
+        },
+        {
+          "name": "np.divide",
+          "intent": "Divide arguments element-wise.",
+          "category": [
+            "math",
+            "arithmetic"
+          ],
+          "relatedFunctions": [
+            "np.multiply",
+            "np.true_divide",
+            "np.floor_divide"
+          ],
+          "inputs": [
+            {
+              "name": "x1",
+              "type": "array_like",
+              "meaning": "The dividend.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "x2",
+              "type": "array_like",
+              "meaning": "The divisor.",
+              "constraints": [
+                "must not be null",
+                "must not contain zeros"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "The quotient x1/x2, element-wise."
+          },
+          "preconditions": [
+            "x2 must not contain zeros",
+            "x1 and x2 must be broadcastable"
+          ],
+          "sideEffects": [],
+          "failureModes": [
+            "RuntimeWarning: divide by zero encountered in divide"
+          ],
+          "examples": [
+            {
+              "description": "Two arrays",
+              "code": "np.divide([10, 20, 30], [2, 4, 5])",
+              "output": "array([5., 5., 6.])"
+            },
+            {
+              "description": "Array by scalar",
+              "code": "np.divide([1, 2, 3], 2)",
+              "output": "array([0.5, 1. , 1.5])"
+            }
+          ]
+        },
+        {
+          "name": "np.power",
+          "intent": "First array elements raised to powers from second array, element-wise.",
+          "category": [
+            "math",
+            "arithmetic"
+          ],
+          "relatedFunctions": [
+            "np.sqrt",
+            "np.exp",
+            "np.log"
+          ],
+          "inputs": [
+            {
+              "name": "x1",
+              "type": "array_like",
+              "meaning": "The bases.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "x2",
+              "type": "array_like",
+              "meaning": "The exponents.",
+              "constraints": [
+                "must not be null"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "The bases in x1 raised to the exponents in x2."
+          },
+          "preconditions": [
+            "x1 and x2 must be broadcastable"
+          ],
+          "sideEffects": [],
+          "failureModes": [
+            "ValueError if arrays cannot be broadcast"
+          ],
+          "examples": [
+            {
+              "description": "Array to scalar power",
+              "code": "np.power([2, 3, 4], 2)",
+              "output": "array([ 4,  9, 16])"
+            },
+            {
+              "description": "Two arrays",
+              "code": "np.power([2, 3], [1, 2])",
+              "output": "array([2, 9])"
+            }
+          ]
+        },
+        {
+          "name": "np.sqrt",
+          "intent": "Return the non-negative square-root of an array, element-wise.",
+          "category": [
+            "math",
+            "arithmetic"
+          ],
+          "relatedFunctions": [
+            "np.power",
+            "np.cbrt",
+            "np.exp"
+          ],
+          "inputs": [
+            {
+              "name": "x",
+              "type": "array_like",
+              "meaning": "The input array.",
+              "constraints": [
+                "must not contain negative values for real output"
+              ]
+            },
+            {
+              "name": "out",
+              "type": "np.array, optional",
+              "meaning": "A location into which the result is stored.",
+              "constraints": [
+                "optional"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "The positive square-root of each element."
+          },
+          "preconditions": [
+            "x must contain only non-negative values for real output"
+          ],
+          "sideEffects": [
+            "RuntimeWarning: invalid value encountered for sqrt if input contains negative"
+          ],
+          "failureModes": [
+            "RuntimeWarning: invalid value encountered in sqrt (produces NaN for negative)"
+          ],
+          "examples": [
+            {
+              "description": "Perfect squares",
+              "code": "np.sqrt([1, 4, 9, 16])",
+              "output": "array([1., 2., 3., 4.])"
+            },
+            {
+              "description": "Non-perfect squares",
+              "code": "np.sqrt([2, 3, 5])",
+              "output": "array([1.41421356, 1.73205081, 2.23606798])"
+            },
+            {
+              "description": "Zero",
+              "code": "np.sqrt([0, 1, 4])",
+              "output": "array([0., 1., 2.])"
+            }
+          ]
+        }
+      ],
+      "trigonometric": [
+        {
+          "name": "np.sin",
+          "intent": "Trigonometric sine, element-wise.",
+          "category": [
+            "math",
+            "trigonometric"
+          ],
+          "relatedFunctions": [
+            "np.cos",
+            "np.tan",
+            "np.arcsin",
+            "np.radians"
+          ],
+          "inputs": [
+            {
+              "name": "x",
+              "type": "array_like",
+              "meaning": "The input angle in radians.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "out",
+              "type": "np.array, optional",
+              "meaning": "Output array.",
+              "constraints": [
+                "optional"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "The sine of each element in x."
+          },
+          "preconditions": [
+            "x must be in radians"
+          ],
+          "sideEffects": [],
+          "failureModes": [],
+          "examples": [
+            {
+              "description": "Key angles",
+              "code": "np.sin([0, np.pi/2, np.pi])",
+              "output": "array([0., 1., 1.22464680e-16])"
+            },
+            {
+              "description": "Array of angles",
+              "code": "np.sin([0, np.pi/6, np.pi/4, np.pi/3])",
+              "output": "array([0.        , 0.5       , 0.70710678, 0.86602540])"
+            }
+          ]
+        },
+        {
+          "name": "np.cos",
+          "intent": "Trigonometric cosine, element-wise.",
+          "category": [
+            "math",
+            "trigonometric"
+          ],
+          "relatedFunctions": [
+            "np.sin",
+            "np.tan",
+            "np.arccos",
+            "np.radians"
+          ],
+          "inputs": [
+            {
+              "name": "x",
+              "type": "array_like",
+              "meaning": "The input angle in radians.",
+              "constraints": [
+                "must not be null"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "The cosine of each element."
+          },
+          "preconditions": [
+            "x must be in radians"
+          ],
+          "sideEffects": [],
+          "failureModes": [],
+          "examples": [
+            {
+              "description": "Key angles",
+              "code": "np.cos([0, np.pi/2, np.pi])",
+              "output": "array([ 1.00000000e+00,  6.12323400e-17, -1.00000000e+00])"
+            }
+          ]
+        },
+        {
+          "name": "np.arctan2",
+          "intent": "Element-wise arc tangent of x1/x2 choosing the quadrant correctly.",
+          "category": [
+            "math",
+            "trigonometric"
+          ],
+          "relatedFunctions": [
+            "np.arctan",
+            "np.degrees",
+            "np.radians"
+          ],
+          "inputs": [
+            {
+              "name": "x1",
+              "type": "array_like",
+              "meaning": "y-coordinates.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "x2",
+              "type": "array_like",
+              "meaning": "x-coordinates.",
+              "constraints": [
+                "must not be null"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "Angle in radians in [-\u03c0, \u03c0]."
+          },
+          "preconditions": [
+            "x1 and x2 must be broadcastable"
+          ],
+          "sideEffects": [],
+          "failureModes": [],
+          "examples": [
+            {
+              "description": "Quadrant 1",
+              "code": "np.arctan2(1, 1)",
+              "output": "0.7853981633974483  # \u03c0/4"
+            },
+            {
+              "description": "Multiple points",
+              "code": "np.arctan2([1, 1, -1, -1], [1, -1, 1, -1])",
+              "output": "array([ 0.78539816,  2.35619449, -0.78539816, -2.35619449])"
+            }
+          ]
+        }
+      ],
+      "explog": [
+        {
+          "name": "np.exp",
+          "intent": "Calculate the exponential of all elements in the input array.",
+          "category": [
+            "math",
+            "explog"
+          ],
+          "relatedFunctions": [
+            "np.log",
+            "np.log10",
+            "np.exp2",
+            "np.power"
+          ],
+          "inputs": [
+            {
+              "name": "x",
+              "type": "array_like",
+              "meaning": "The input array.",
+              "constraints": [
+                "must not be null"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "The exponential of each element."
+          },
+          "preconditions": [
+            "x must be numeric"
+          ],
+          "sideEffects": [
+            "May produce very large numbers or overflow warnings"
+          ],
+          "failureModes": [
+            "RuntimeWarning: overflow encountered in exp"
+          ],
+          "examples": [
+            {
+              "description": "Natural exponential base",
+              "code": "np.exp([0, 1, 2])",
+              "output": "array([ 1.        ,  2.71828183,  7.3890561 ])"
+            },
+            {
+              "description": "Negative exponents",
+              "code": "np.exp([-1, -2, -3])",
+              "output": "array([0.36787944, 0.13533528, 0.04978707])"
+            }
+          ]
+        },
+        {
+          "name": "np.log",
+          "intent": "Natural logarithm, element-wise.",
+          "category": [
+            "math",
+            "explog"
+          ],
+          "relatedFunctions": [
+            "np.exp",
+            "np.log10",
+            "np.log2"
+          ],
+          "inputs": [
+            {
+              "name": "x",
+              "type": "array_like",
+              "meaning": "The input array.",
+              "constraints": [
+                "must contain positive values only"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "The natural logarithm of each element."
+          },
+          "preconditions": [
+            "x must contain only positive values"
+          ],
+          "sideEffects": [
+            "RuntimeWarning: divide by zero and invalid value for log if input contains \u2264 0"
+          ],
+          "failureModes": [
+            "RuntimeWarning: invalid value encountered in log (produces -inf or NaN)"
+          ],
+          "examples": [
+            {
+              "description": "Positive values",
+              "code": "np.log([1, np.e, np.e**2])",
+              "output": "array([0., 1., 2.])"
+            },
+            {
+              "description": "Fractional values",
+              "code": "np.log([0.5, 1, 2])",
+              "output": "array([-0.69314718,  0.        ,  0.69314718])"
+            }
+          ]
+        }
+      ]
+    },
+    "statistics": {
+      "basic": [
+        {
+          "name": "np.mean",
+          "intent": "Compute the arithmetic mean along the specified axis.",
+          "category": [
+            "statistics",
+            "basic"
+          ],
+          "relatedFunctions": [
+            "np.average",
+            "np.median",
+            "np.std",
+            "np.var"
+          ],
+          "inputs": [
+            {
+              "name": "a",
+              "type": "array_like",
+              "meaning": "Array containing numbers whose mean is desired.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "axis",
+              "type": "None or int or tuple of ints",
+              "meaning": "Axis or axes along which to operate.",
+              "constraints": [
+                "optional",
+                "default: None (flattened array)"
+              ]
+            },
+            {
+              "name": "dtype",
+              "type": "np.dtype",
+              "meaning": "Type to use in computing the mean.",
+              "constraints": [
+                "optional"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.ndarray or scalar",
+            "meaning": "If axis is None, the result is a scalar. Otherwise, an array with the same shape as a."
+          },
+          "preconditions": [
+            "a must be array-like with numeric values"
+          ],
+          "sideEffects": [],
+          "failureModes": [
+            "TypeError if a is not numeric"
+          ],
+          "examples": [
+            {
+              "description": "1D array mean",
+              "code": "np.mean([1, 2, 3, 4, 5])",
+              "output": "3.0"
+            },
+            {
+              "description": "2D array mean along axis 0",
+              "code": "np.mean([[1, 2, 3], [4, 5, 6]], axis=0)",
+              "output": "array([2.5, 3.5, 4.5])"
+            },
+            {
+              "description": "2D array mean along axis 1",
+              "code": "np.mean([[1, 2, 3], [4, 5, 6]], axis=1)",
+              "output": "array([2., 5.])"
+            }
+          ]
+        },
+        {
+          "name": "np.std",
+          "intent": "Compute the standard deviation along the specified axis.",
+          "category": [
+            "statistics",
+            "basic"
+          ],
+          "relatedFunctions": [
+            "np.var",
+            "np.mean",
+            "np.median"
+          ],
+          "inputs": [
+            {
+              "name": "a",
+              "type": "array_like",
+              "meaning": "Calculate the standard deviation of the array elements.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "axis",
+              "type": "None or int or tuple of ints",
+              "meaning": "Axis or axes along which the standard deviation is computed.",
+              "constraints": [
+                "optional",
+                "default: None"
+              ]
+            },
+            {
+              "name": "ddof",
+              "type": "int",
+              "meaning": "Means Delta Degrees of Freedom. Default is 0.",
+              "constraints": [
+                "optional",
+                "default: 0"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.ndarray or scalar",
+            "meaning": "Standard deviation of the array elements."
+          },
+          "preconditions": [
+            "a must contain numeric values"
+          ],
+          "sideEffects": [],
+          "failureModes": [],
+          "examples": [
+            {
+              "description": "1D array std",
+              "code": "np.std([1, 2, 3, 4, 5])",
+              "output": "1.4142135623730951"
+            },
+            {
+              "description": "Sample std (ddof=1)",
+              "code": "np.std([1, 2, 3, 4, 5], ddof=1)",
+              "output": "1.5811388300841898"
+            }
+          ]
+        },
+        {
+          "name": "np.var",
+          "intent": "Compute the variance along the specified axis.",
+          "category": [
+            "statistics",
+            "basic"
+          ],
+          "relatedFunctions": [
+            "np.std",
+            "np.mean"
+          ],
+          "inputs": [
+            {
+              "name": "a",
+              "type": "array_like",
+              "meaning": "Array containing numbers whose variance is desired.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "axis",
+              "type": "None or int or tuple of ints",
+              "meaning": "Axis along which to compute variance.",
+              "constraints": [
+                "optional"
+              ]
+            },
+            {
+              "name": "ddof",
+              "type": "int",
+              "meaning": "Delta Degrees of Freedom.",
+              "constraints": [
+                "optional",
+                "default: 0"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.ndarray or scalar",
+            "meaning": "The variance of the array elements."
+          },
+          "preconditions": [
+            "a must be numeric"
+          ],
+          "sideEffects": [],
+          "failureModes": [],
+          "examples": [
+            {
+              "description": "1D array variance",
+              "code": "np.var([1, 2, 3, 4, 5])",
+              "output": "2.0"
+            },
+            {
+              "description": "Sample variance",
+              "code": "np.var([1, 2, 3, 4, 5], ddof=1)",
+              "output": "2.5"
+            }
+          ]
+        }
+      ]
+    },
+    "sort_search": {
+      "searching": [
+        {
+          "name": "np.argmax",
+          "intent": "Returns the indices of the maximum values along an axis.",
+          "category": [
+            "sort_search",
+            "searching"
+          ],
+          "relatedFunctions": [
+            "np.argmin",
+            "np.max",
+            "np.min",
+            "np.argsort"
+          ],
+          "inputs": [
+            {
+              "name": "a",
+              "type": "array_like",
+              "meaning": "Input array.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "axis",
+              "type": "None or int",
+              "meaning": "If None, the index is into the flattened array.",
+              "constraints": [
+                "optional",
+                "default: None"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.ndarray or int",
+            "meaning": "Array of indices into the array."
+          },
+          "preconditions": [
+            "a must be array-like"
+          ],
+          "sideEffects": [],
+          "failureModes": [
+            "ValueError if array is empty"
+          ],
+          "examples": [
+            {
+              "description": "1D array max index",
+              "code": "np.argmax([3, 1, 4, 1, 5])",
+              "output": "4"
+            },
+            {
+              "description": "2D array max index along axis 0",
+              "code": "np.argmax([[1, 5], [3, 2]], axis=0)",
+              "output": "array([1, 0])"
+            },
+            {
+              "description": "2D array max index along axis 1",
+              "code": "np.argmax([[1, 5], [3, 2]], axis=1)",
+              "output": "array([1, 0])"
+            }
+          ]
+        }
+      ],
+      "sorting": [
+        {
+          "name": "np.sort",
+          "intent": "Return a sorted copy of an array.",
+          "category": [
+            "sort_search",
+            "sorting"
+          ],
+          "relatedFunctions": [
+            "np.argsort",
+            "np.msort",
+            "np.lexsort"
+          ],
+          "inputs": [
+            {
+              "name": "a",
+              "type": "array_like",
+              "meaning": "Array to be sorted.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "axis",
+              "type": "int or None",
+              "meaning": "Axis along which to sort.",
+              "constraints": [
+                "optional",
+                "default: -1"
+              ]
+            },
+            {
+              "name": "kind",
+              "type": "str",
+              "meaning": "Sorting algorithm. Can be 'quicksort', 'mergesort', 'heapsort', 'stable'.",
+              "constraints": [
+                "optional",
+                "default: 'quicksort'"
+              ]
+            },
+            {
+              "name": "order",
+              "type": "str or list of str",
+              "meaning": "When a is a structured array, this argument specifies which fields to compare first.",
+              "constraints": [
+                "optional"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "Sorted array."
+          },
+          "preconditions": [
+            "a must be array-like"
+          ],
+          "sideEffects": [],
+          "failureModes": [
+            "TypeError if array contains incomparable types"
+          ],
+          "examples": [
+            {
+              "description": "1D array sort",
+              "code": "np.sort([3, 1, 4, 1, 5])",
+              "output": "array([1, 1, 3, 4, 5])"
+            },
+            {
+              "description": "2D array sort along axis 0",
+              "code": "np.sort([[3, 1], [2, 4]], axis=0)",
+              "output": "array([[2, 1],\n       [3, 4]])"
+            }
+          ]
+        }
+      ],
+      "extrema": [
+        {
+          "name": "np.min",
+          "intent": "Return the minimum of an array or minimum along an axis.",
+          "category": [
+            "sort_search",
+            "extrema"
+          ],
+          "relatedFunctions": [
+            "np.max",
+            "np.argmin",
+            "np.argmax"
+          ],
+          "inputs": [
+            {
+              "name": "a",
+              "type": "array_like",
+              "meaning": "Array with numbers.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "axis",
+              "type": "None or int or tuple of ints",
+              "meaning": "Axis or axes along which to operate.",
+              "constraints": [
+                "optional",
+                "default: None"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.ndarray or scalar",
+            "meaning": "Minimum value."
+          },
+          "preconditions": [
+            "a must be numeric"
+          ],
+          "sideEffects": [],
+          "failureModes": [
+            "ValueError if array is empty"
+          ],
+          "examples": [
+            {
+              "description": "1D array minimum",
+              "code": "np.min([3, 1, 4, 1, 5])",
+              "output": "1"
+            },
+            {
+              "description": "2D array minimum",
+              "code": "np.min([[1, 5], [3, 2]])",
+              "output": "1"
+            }
+          ]
+        },
+        {
+          "name": "np.max",
+          "intent": "Return the maximum of an array or maximum along an axis.",
+          "category": [
+            "sort_search",
+            "extrema"
+          ],
+          "relatedFunctions": [
+            "np.min",
+            "np.argmax",
+            "np.argmin"
+          ],
+          "inputs": [
+            {
+              "name": "a",
+              "type": "array_like",
+              "meaning": "Array with numbers.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "axis",
+              "type": "None or int or tuple of ints",
+              "meaning": "Axis or axes along which to operate.",
+              "constraints": [
+                "optional",
+                "default: None"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.ndarray or scalar",
+            "meaning": "Maximum value."
+          },
+          "preconditions": [
+            "a must be numeric"
+          ],
+          "sideEffects": [],
+          "failureModes": [
+            "ValueError if array is empty"
+          ],
+          "examples": [
+            {
+              "description": "1D array maximum",
+              "code": "np.max([3, 1, 4, 1, 5])",
+              "output": "5"
+            },
+            {
+              "description": "2D array maximum",
+              "code": "np.max([[1, 5], [3, 2]])",
+              "output": "5"
+            }
+          ]
+        }
+      ]
+    },
+    "summation": {
+      "basic": [
+        {
+          "name": "np.sum",
+          "intent": "Sum of array elements over a given axis.",
+          "category": [
+            "summation",
+            "basic"
+          ],
+          "relatedFunctions": [
+            "np.cumsum",
+            "np.add.reduce",
+            "np.average"
+          ],
+          "inputs": [
+            {
+              "name": "a",
+              "type": "array_like",
+              "meaning": "Elements to sum.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "axis",
+              "type": "None or int or tuple of ints",
+              "meaning": "Axis or axes along which a sum is performed.",
+              "constraints": [
+                "optional",
+                "default: None (sum all elements)"
+              ]
+            },
+            {
+              "name": "dtype",
+              "type": "np.dtype",
+              "meaning": "The type of the returned array.",
+              "constraints": [
+                "optional"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.ndarray or scalar",
+            "meaning": "Sum of array elements."
+          },
+          "preconditions": [
+            "a must be numeric"
+          ],
+          "sideEffects": [],
+          "failureModes": [
+            "TypeError if a contains non-numeric values"
+          ],
+          "examples": [
+            {
+              "description": "1D array sum",
+              "code": "np.sum([1, 2, 3, 4, 5])",
+              "output": "15"
+            },
+            {
+              "description": "2D array sum along axis 0",
+              "code": "np.sum([[1, 2, 3], [4, 5, 6]], axis=0)",
+              "output": "array([5, 7, 9])"
+            },
+            {
+              "description": "2D array sum along axis 1",
+              "code": "np.sum([[1, 2, 3], [4, 5, 6]], axis=1)",
+              "output": "array([6, 15])"
+            }
+          ]
+        }
+      ]
+    },
+    "linear_algebra": {
+      "basic": [
+        {
+          "name": "np.dot",
+          "intent": "Dot product of two arrays.",
+          "category": [
+            "linear_algebra",
+            "basic"
+          ],
+          "relatedFunctions": [
+            "np.vdot",
+            "np.matmul",
+            "np.inner",
+            "np.outer"
+          ],
+          "inputs": [
+            {
+              "name": "a",
+              "type": "array_like",
+              "meaning": "First argument.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "b",
+              "type": "array_like",
+              "meaning": "Second argument.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "out",
+              "type": "np.array, optional",
+              "meaning": "Output argument.",
+              "constraints": [
+                "optional"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.ndarray or scalar",
+            "meaning": "Returns the dot product of a and b."
+          },
+          "preconditions": [
+            "a and b shapes must be compatible for dot product",
+            "a and b must be numeric"
+          ],
+          "sideEffects": [
+            "Overwrites out parameter if provided"
+          ],
+          "failureModes": [
+            "ValueError if arrays have incompatible shapes"
+          ],
+          "examples": [
+            {
+              "description": "Two 1D arrays (vectors)",
+              "code": "np.dot([1, 2, 3], [4, 5, 6])",
+              "output": "32"
+            },
+            {
+              "description": "Matrix-vector product",
+              "code": "np.dot([[1, 2], [3, 4]], [1, 2])",
+              "output": "array([ 5, 11])"
+            },
+            {
+              "description": "Matrix-matrix product",
+              "code": "np.dot([[1, 2], [3, 4]], [[1, 0], [0, 1]])",
+              "output": "array([[1, 2],\n       [3, 4]])"
+            }
+          ]
+        }
+      ]
+    },
+    "array_manipulation": {
+      "reshape": [
+        {
+          "name": "np.reshape",
+          "intent": "Gives a new shape to an array without changing its data.",
+          "category": [
+            "array_manipulation",
+            "reshape"
+          ],
+          "relatedFunctions": [
+            "np.ndarray.reshape",
+            "np.flatten",
+            "np.ravel",
+            "np.transpose"
+          ],
+          "inputs": [
+            {
+              "name": "a",
+              "type": "array_like",
+              "meaning": "Array to be reshaped.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "newshape",
+              "type": "int or tuple of ints",
+              "meaning": "The new shape should be compatible with the original shape.",
+              "constraints": [
+                "product must equal total number of elements"
+              ]
+            },
+            {
+              "name": "order",
+              "type": "str",
+              "meaning": "Read the elements of a using this index order, and place the elements into the reshaped array using this index order.",
+              "constraints": [
+                "optional",
+                "default: C",
+                "can be 'C', 'F', or 'A'"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "Reshaped array with new shape."
+          },
+          "preconditions": [
+            "newshape must be compatible with total number of elements",
+            "one dimension can be -1 to infer size"
+          ],
+          "sideEffects": [],
+          "failureModes": [
+            "ValueError if newshape is incompatible with a.size"
+          ],
+          "examples": [
+            {
+              "description": "1D to 2D",
+              "code": "np.reshape([1, 2, 3, 4, 5, 6], (2, 3))",
+              "output": "array([[1, 2, 3],\n       [4, 5, 6]])"
+            },
+            {
+              "description": "Using -1 for automatic dimension",
+              "code": "np.reshape([1, 2, 3, 4, 5, 6], (3, -1))",
+              "output": "array([[1, 2],\n       [3, 4],\n       [5, 6]])"
+            },
+            {
+              "description": "2D to 1D",
+              "code": "np.reshape([[1, 2, 3], [4, 5, 6]], -1)",
+              "output": "array([1, 2, 3, 4, 5, 6])"
+            }
+          ]
+        },
+        {
+          "name": "np.transpose",
+          "intent": "Permute the dimensions of an array.",
+          "category": [
+            "array_manipulation",
+            "reshape"
+          ],
+          "relatedFunctions": [
+            "np.ndarray.T",
+            "np.ndarray.transpose",
+            "np.moveaxis",
+            "np.swapaxes"
+          ],
+          "inputs": [
+            {
+              "name": "a",
+              "type": "array_like",
+              "meaning": "Input array.",
+              "constraints": [
+                "must not be null"
+              ]
+            },
+            {
+              "name": "axes",
+              "type": "None or tuple of ints",
+              "meaning": "If None or absent, transpose reverses the order of axes.",
+              "constraints": [
+                "optional"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "Transposed array."
+          },
+          "preconditions": [
+            "a must be array-like"
+          ],
+          "sideEffects": [],
+          "failureModes": [
+            "ValueError if axes is invalid"
+          ],
+          "examples": [
+            {
+              "description": "2D array transpose",
+              "code": "np.transpose([[1, 2, 3], [4, 5, 6]])",
+              "output": "array([[1, 4],\n       [2, 5],\n       [3, 6]])"
+            },
+            {
+              "description": "Using .T attribute",
+              "code": "np.array([[1, 2, 3], [4, 5, 6]]).T",
+              "output": "array([[1, 4],\n       [2, 5],\n       [3, 6]])"
+            }
+          ]
+        }
+      ],
+      "concatenate": [
+        {
+          "name": "np.concatenate",
+          "intent": "Join a sequence of arrays along an existing axis.",
+          "category": [
+            "array_manipulation",
+            "concatenate"
+          ],
+          "relatedFunctions": [
+            "np.stack",
+            "np.hstack",
+            "np.vstack",
+            "np.dstack"
+          ],
+          "inputs": [
+            {
+              "name": "arrays",
+              "type": "sequence of array_like",
+              "meaning": "The arrays must have the same shape, except in the dimension corresponding to axis.",
+              "constraints": [
+                "must not be null",
+                "at least 1 array"
+              ]
+            },
+            {
+              "name": "axis",
+              "type": "int",
+              "meaning": "The axis along which the arrays will be joined.",
+              "constraints": [
+                "optional",
+                "default: 0"
+              ]
+            }
+          ],
+          "outputs": {
+            "type": "np.array",
+            "meaning": "The concatenated array."
+          },
+          "preconditions": [
+            "all arrays must have compatible shapes except in concatenation axis"
+          ],
+          "sideEffects": [],
+          "failureModes": [
+            "ValueError if shapes are not compatible"
+          ],
+          "examples": [
+            {
+              "description": "Concatenate 1D arrays along axis 0",
+              "code": "np.concatenate([[1, 2], [3, 4]])",
+              "output": "array([1, 2, 3, 4])"
+            },
+            {
+              "description": "Concatenate 2D arrays along axis 0",
+              "code": "np.concatenate([[[1, 2], [3, 4]], [[5, 6], [7, 8]]], axis=0)",
+              "output": "array([[[1, 2], [3, 4]], [[5, 6], [7, 8]]])"
+            },
+            {
+              "description": "Concatenate 2D arrays along axis 1",
+              "code": "np.concatenate([[[1, 2]], [[3, 4]]], axis=1)",
+              "output": "array([[1, 2, 3, 4]])"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
