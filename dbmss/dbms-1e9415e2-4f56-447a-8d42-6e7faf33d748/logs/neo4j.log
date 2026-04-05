@@ -1,0 +1,24 @@
+2026-04-05 12:29:46.604+0000 INFO  Logging config in use: File 'C:\Users\Sekaran\.Neo4jDesktop2\Data\dbmss\dbms-1e9415e2-4f56-447a-8d42-6e7faf33d748\conf\user-logs.xml'
+2026-04-05 12:29:46.636+0000 INFO  The license agreement was accepted with environment variable NEO4J_ACCEPT_LICENSE_AGREEMENT=yes when the Software was started.
+
+
+2026-04-05 12:29:46.638+0000 INFO  Starting...
+2026-04-05 12:29:59.300+0000 INFO  ======== Neo4j 2026.03.1 ========
+2026-04-05 12:30:00.653+0000 INFO  This instance is ServerId{b1f18c8b} (b1f18c8b-bf6c-4043-817a-8426daf81756)
+2026-04-05 12:30:02.524+0000 INFO  X-Forward header processing enabled with security controls
+2026-04-05 12:30:02.524+0000 WARN  SECURITY WARNING: X-Forward headers accepted from any source - configure allow_proxies
+2026-04-05 12:30:02.524+0000 WARN  SECURITY WARNING: X-Forward headers accept any hostname - configure allow_hosts
+2026-04-05 12:30:03.001+0000 INFO  Resolved endpoints with LIST{endpoints:'[localhost:6000]'} to '[localhost:6000]'
+2026-04-05 12:30:03.401+0000 INFO  Resolved endpoints with LIST{endpoints:'[localhost:6000]'} to '[localhost:6000]'
+2026-04-05 12:30:11.416+0000 INFO  Default database 'neo4j' is created
+2026-04-05 12:30:13.499+0000 INFO  Sending metrics to CSV file at C:\Users\Sekaran\.Neo4jDesktop2\Data\dbmss\dbms-1e9415e2-4f56-447a-8d42-6e7faf33d748\metrics
+2026-04-05 12:30:13.998+0000 INFO  Anonymous Usage Data is being sent to Neo4j, see https://neo4j.com/docs/usage-data/
+2026-04-05 12:30:14.017+0000 INFO  Bolt enabled on localhost:7687.
+2026-04-05 12:30:14.027+0000 INFO  Bolt (Routing) enabled on localhost:7688.
+2026-04-05 12:30:15.156+0000 INFO  This server has built-in support for online monitoring through Fleet Manager. Visit https://console.neo4j.io to get started!
+2026-04-05 12:30:22.004+0000 INFO  HTTP enabled on localhost:7474.
+2026-04-05 12:30:22.004+0000 INFO  Remote interface available at http://localhost:7474/
+2026-04-05 12:30:22.014+0000 INFO  id: C857F2354B28ED3DF575938183E9494B8BBE3D7E5C9C2DF1C2CFBAF7D4F463DB
+2026-04-05 12:30:22.014+0000 INFO  name: system
+2026-04-05 12:30:22.014+0000 INFO  creationDate: 2026-04-05T12:30:06.41Z
+2026-04-05 12:30:22.018+0000 INFO  Started.

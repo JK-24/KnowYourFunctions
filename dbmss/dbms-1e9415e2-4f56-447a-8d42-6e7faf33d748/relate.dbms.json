@@ -1,0 +1,20 @@
+{
+  "name": "NumpyFunctions_250",
+  "description": "",
+  "tags": [],
+  "metadata": {
+    "createdAt": 1775392177051,
+    "lastStartedAt": 1775392177179,
+    "lastDatabasesRefresh": 1775394772705,
+    "databases": [
+      {
+        "databaseName": "neo4j"
+      },
+      {
+        "databaseName": "system"
+      }
+    ]
+  },
+  "id": "1e9415e2-4f56-447a-8d42-6e7faf33d748",
+  "isCustomPathInstallation": false
+}
