@@ -1,0 +1,125 @@
+{
+  "instances": [
+      {
+        "name": "np.absolute",
+        "intent": "Find the absolute value of each element in the input array.",
+        "relatedFunctions": ["np.absolute", "np.fabs","np.sign","np.clip"],
+
+        "inputs": [
+          {
+            "name": "x",
+            "type": "np.array or scalar",
+            "meaning": "The input array or scalar value.",
+            "constraints": ["must not be null"]
+          },
+          {
+            "name": "out",
+            "type": "np.array, optional",
+            "meaning": "A location into which the result is stored.",
+            "constraints": ["must be same shape as x"]
+          }
+        ],
+
+        "outputs": {
+          "type": ["np.array or scalar","Tuple of np.array or scalar"],
+          "meaning": "The absolute value of the input array or scalar."
+        },
+
+        "preconditions": [
+          "x is a valid numpy array or a scalar.",
+          "if out is provided, it must be writable.",
+          "x must not contain NaN values.",
+          "x must be of a numeric data type."
+        ],
+
+        "sideEffects": [
+          "Overwrites out parameter if provided"
+        ],
+
+        "failureModes": [
+          "TypeError if x is not a numpy array or scalar",
+          "ValueError if out shape does not match x shape",
+          "RuntimeError if x contains NaN values"
+        ]
+    },
+    {
+      "name" : "np.abs",
+      "intent" : "Short hand for np.absolute."
+    }
+  ],
+  "functions" : [
+    {
+      "name": "np.array",
+      "intent": "Create a numpy array from a list or tuple.",
+      "relatedFunctions": ["np.asarray", "np.copy","np.zeros","np.ones","np.empty","np.empty_like","np.ones_like","np.zeros_like","np.full","np.full_like"],
+
+      "inputs": [
+        {
+          "name": "object",
+          "type": "list or tuple",
+          "meaning": "The input array or scalar value.",
+          "constraints": ["must not be null"]
+        },
+        {
+          "name": "dtype",
+          "type": "np.dtype",
+          "meaning": "The desired data type for the array.",
+          "constraints": ["must be a valid numpy dtype","optional"]
+        },
+        {
+          "name": "copy",
+          "type": "bool",
+          "meaning": "If true, the object is copied.",
+          "constraints": ["optional"]
+        },
+        {
+          "name": "order",
+          "type": "str",
+          "meaning": "The desired memory layout order for the array. C - row major or F - column major.",
+          "constraints": ["must be 'C' or 'F' order","optional"]
+        },
+        {
+          "name": "subok",
+          "type": "bool",
+          "meaning": "If true, subclasses are preserved.",
+          "constraints": ["optional"]
+        },
+        {
+          "name": "ndmin",
+          "type": "int",
+          "meaning": "The minimum number of dimensions for the resulting array.",
+          "constraints": ["must be non-negative","optional"]
+        },
+        {
+          "name": "like",
+          "type": "np.array",
+          "meaning": "Reference object to allow the creation of arrays which are not NumPy arrays.",
+          "constraints": ["must be a valid numpy array","optional"]
+        }
+      ],
+
+      "outputs": {
+        "type": "np.array",
+        "meaning": "The created numpy array."
+      },
+
+      "preconditions": [
+        "object is a valid list or tuple.",
+        "if dtype is provided, it must be a valid numpy dtype.",
+        "if order is provided, it must be 'C' or 'F'.",
+        "if like is provided, it must be a valid numpy array."
+      ],
+
+      "sideEffects": [
+        "Allocates memory for the new array"
+      ],
+
+      "failureModes": [
+        "TypeError if object is not a list or tuple",
+        "TypeError if dtype is invalid",
+        "ValueError if ndmin is negative"
+      ]
+      
+    }
+  ]
+}
